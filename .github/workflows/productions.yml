@@ -1,26 +1,29 @@
 name: Foodhub CI/CD
-on: 
+
+on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
     - name: Install Node and npm
       uses: actions/setup-node@v3
       with:
         node-version: '16'
-    - name: Install dependencies
-      run: npm install 
-    - name: Build file
-      run: cd frontend
-           npm run build
-    - run:
-        cd backend
-        npm i
 
-      
-    
+    - name: Install frontend dependencies and build
+      run: |
+        cd frontend
+        npm install
+        npm run build
+
+    - name: Install backend dependencies
+      run: |
+        cd ../backend  # Assuming the backend directory is at the same level as the frontend directory
+        npm install
