@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      CI: ""
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -22,8 +24,6 @@ jobs:
         cd frontend
         npm install
         npm run build
-        env:
-         CI: ""
 
     - name: Install backend dependencies
       run: |
