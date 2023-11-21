@@ -22,6 +22,8 @@ jobs:
         cd frontend
         npm install
         npm run build
+        env:
+         CI: ""
 
     - name: Install backend dependencies
       run: |
