@@ -27,5 +27,5 @@ jobs:
 
     - name: Install backend dependencies
       run: |
-        cd backend  # Assuming the backend directory is at the same level as the frontend directory
+        cd backend  
         npm install
